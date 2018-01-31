@@ -1,0 +1,6 @@
+apiVersion: dev.kubernetes.pavanvelidandla.com/v1
+kind: Database
+metadata:
+  name: my-database
+spec:
+  user: my-user

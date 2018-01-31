@@ -1,0 +1,7 @@
+apiVersion: dev.kubernetes.pavanvelidandla.com/v1
+kind: ConfigFromGit
+metadata:
+  name: mygitconfigs
+spec:
+  giturl: https://github.com/pavanvelidandla/configs.git
+  subdirectory: env2

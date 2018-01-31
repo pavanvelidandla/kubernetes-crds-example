@@ -100,7 +100,6 @@ func (c *Controller) HasSynced() bool {
 	return c.informer.Informer().HasSynced()
 }
 
-// LastSyncResourceVersion is required for the cache.Controller interface.
 func (c *Controller) LastSyncResourceVersion() string {
 	return c.informer.Informer().LastSyncResourceVersion()
 }
@@ -138,14 +137,10 @@ func (c *Controller) processItem(key string) error {
 	}
 
 	if !exists {
-		//fmt.Printf(obj)
-		//c.eventHandler.ObjectDeleted(obj)
-		//fmt.Print(obj)
-		fmt.Println("Object terminated - ", key)
+
+		fmt.Println("CRD deleted - ", key)
 		return nil
 	}
-	//fmt.Print(obj)
-	//fmt.Println("Created a new Pod ", key, Obj.(*api_v1.Pod).Name, " Container Name - ", Obj.(*api_v1.Pod).Spec.Containers[0].Name, " Image Name - ", Obj.(*api_v1.Pod).Spec.Containers[0].Image)
 	fmt.Println("Created a new crd ", Obj.(*v1.ConfigFromGit).Name, " ", Obj.(*v1.ConfigFromGit).Spec.GitUrl)
 	c.ProcessConfig(*Obj.(*v1.ConfigFromGit))
 	return nil

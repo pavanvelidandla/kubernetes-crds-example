@@ -50,8 +50,8 @@ func NewController(crdclientset clientset.Interface, kubeclient kubernetes.Inter
 			newDepl := new.(*v1.ConfigFromGit)
 			oldDepl := old.(*v1.ConfigFromGit)
 			if newDepl.ResourceVersion == oldDepl.ResourceVersion {
-				// Periodic resync will send update events for all known Deployments.
-				// Two different versions of the same Deployment will always have different RVs.
+				// Periodic resync will send update events for all known Resources.
+				// Two different versions of the same CRDS (configgit kind) will always have different RVs.
 				return
 			}
 
